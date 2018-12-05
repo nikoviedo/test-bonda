@@ -1,0 +1,82 @@
+/* wallet list */
+.hidden{display: none}
+.wallet-content-list {
+border-right: 1px solid #e1e1e3;
+}
+.wallet-content-list .wallet-content-list-header{
+    position: relative
+}
+.wallet-content-list .wallet-content-list-header i{
+    position:absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .4;
+}
+
+.wallet-content-list-items article{
+    width: 100%;
+}
+.wallet-content-list-items article .wallet-item-data h3,
+.wallet-content-list-items article .wallet-item-data h4{
+    margin:0 0 1rem;
+} 
+.wallet-content-list-items article .wallet-item-data h6{
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    margin:0 0 1rem;
+}
+.wallet-content-list-items article .wallet-partner{
+    font-size: 12px;
+    color: var(--black-color-01);
+    margin:0 0 1rem;
+}
+.wallet-content-list-items article .wallet-rubro{
+    font-size:11px;
+    padding:5px 10px;
+    color:var(--black-color-01);
+    display: inline-block;
+    background:#e6e6e6;
+}
+.wallet-content-list-items article .wallet-rubro i{
+    font-size: 14px
+}
+.wallet-content-list-items article .wallet-item-image .img-mkp{
+    width: 100%;
+    height: 112px;
+    position:relative;
+}
+.wallet-content-list-items article .wallet-item-image .img-mkp i{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    opacity: .3;
+}
+.wallet-content-list-items article .wallet-item__footer .right i{
+    color:#979797
+}
+.wallet-content-list-items article .wallet-item__footer .left .wallet-date,
+.wallet-content-list-items article .wallet-item__footer .left .wallet-used {
+    font-weight: 600;
+    color: var(--black-color-01);
+}
+.wallet-content-list-items article .wallet-item__footer .left .wallet-status.ok{
+    color:#8cc03e;
+    font-size:13px;
+}
+.wallet-content-item-list-desciption{
+    background:#f6f6f6;
+    color: var(--black-color-03)
+}
+.wallet-content-item-list-desciption .content .wallet-content-serial{
+    background: #fff;    
+    font-size: 20px;
+    padding: 10px;
+    margin: 0 0 1rem;
+}
+.wallet-content-item-list-desciption img.qr{
+    width:100%;
+    height: auto
+}

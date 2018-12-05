@@ -1,0 +1,73 @@
+.app-modal-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 3;
+  }
+  .visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  }
+  .app-modal {
+    font-family: var(--font-family, Helvetica);
+    font-size: var(--font-size, 13px);
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--border-radius, 0.2em);
+    min-width: 300px;
+  }
+  .app-modal-header {
+    font-size: 1.3em;
+    padding: 5px 10px 5px 10px;
+    border-top-left-radius: var(--border-radius, 0.2em);
+    border-top-right-radius: var(--border-radius, 0.2em);
+    background-color: var(--header-bg-color, #fff);
+    color: var(--header-color, #4c4b4b);
+  }
+  .app-modal-content {
+    padding: 0px 10px 5px 10px;
+  }
+  .app-modal-buttons {
+    padding: 5px 10px 10px 10px;
+    text-align: right;
+  }
+  .app-modal-buttons button {
+    font-size: inherit;
+    margin-left: 10px;
+    min-width: 80px;
+    line-height: 20px;
+    border-style: solid;
+    border-radius: var(--border-radius, 0.2em);
+    padding: 3px;
+    color: var(--button-color, white);
+    cursor: pointer;
+  }
+  .app-modal-cancel {
+    background-color: var(--cancel-bg-color, #848e97);
+    border-color: var(--cancel-bg-color, #848e97);
+  }
+  .app-modal-cancel:hover {
+    background-color: var(--cancel-hover-bg-color, #6c757d);
+    border-color: var(--cancel-hover-bg-color, #6c757d);
+  }
+  .app-modal-ok {
+    background-color: var(--ok-bg-color, #848e97);
+    border-color: var(--ok-bg-color, #848e97);
+  }
+  .app-modal-ok:hover {
+    background-color: var(--ok-hover-bg-color, #6c757d);
+    border-color: var(--ok-hover-bg-color, #6c757d);
+  }
+  

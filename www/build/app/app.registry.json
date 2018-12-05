@@ -1,0 +1,32 @@
+{
+  "namespace": "App",
+  "fsNamespace": "app",
+  "loader": "../app.js",
+  "corePolyfilled": "es5-build-disabled.js",
+  "global": "app.global.js",
+  "core": "app.core.js",
+  "components": {
+    "app-content-list-wallet": {
+      "bundleIds": {
+        "$": "app-content-list-wallet"
+      }
+    },
+    "app-list-wallet": {
+      "bundleIds": {
+        "$": "app-content-list-wallet"
+      }
+    },
+    "app-modal": {
+      "bundleIds": {
+        "$": "app-modal"
+      },
+      "encapsulation": "shadow"
+    },
+    "app-root": {
+      "bundleIds": {
+        "$": "app-content-list-wallet"
+      },
+      "encapsulation": "shadow"
+    }
+  }
+}
