@@ -8,7 +8,7 @@ The test requires [Node.js](https://nodejs.org/) v10+ to run.
  - NODEjs
  - StencilJs
 
-Install the dependencies and devDependencies and start the server.
+Install the repo and framework.
 
 ```sh
 git clone the [repo/folder]
