@@ -35,18 +35,19 @@ export class AppModal {
     return (
       <div class={visible ? "app-modal-wrapper visible" : "app-modal-wrapper"}>
         <div class="app-modal">
+            <button class="close" onClick={handleCancelClick}>
+              X
+            </button>
           <div class="app-modal-header">
             <span>{title}</span>
           </div>
           <div class="app-modal-content">
-            <slot />
+            Tu opinión nos interesa,¡Contanos qué te pareció este benficio!
           </div>
           <div class="app-modal-buttons">
-            <button class="app-modal-cancel" onClick={handleCancelClick}>
-              Cancel
-            </button>
-            <button class="app-modal-ok" onClick={handleOkClick}>
-              Okay
+            
+            <button class="btn" onClick={handleOkClick}>
+              ENVIAR OPINION
             </button>
           </div>
         </div>

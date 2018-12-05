@@ -22,15 +22,14 @@
     font-size: var(--font-size, 13px);
     background-color: #fff;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: var(--border-radius, 0.2em);
+    border-radius:0;
     min-width: 300px;
+    padding:55px 10px 0;
+    height: 100%;
   }
   .app-modal-header {
-    font-size: 1.3em;
-    padding: 5px 10px 5px 10px;
+    font-size: 2.3em;
+    padding: 30px 10px 0;
     border-top-left-radius: var(--border-radius, 0.2em);
     border-top-right-radius: var(--border-radius, 0.2em);
     background-color: var(--header-bg-color, #fff);
@@ -38,36 +37,41 @@
   }
   .app-modal-content {
     padding: 0px 10px 5px 10px;
+    font-size: 1.2em;
+    color:var(--black-color-03);
+    margin: 30px 0
   }
-  .app-modal-buttons {
-    padding: 5px 10px 10px 10px;
-    text-align: right;
+  .app-modal .close{
+    font-size:25px;
+    color:var( --black-color-03);
   }
-  .app-modal-buttons button {
-    font-size: inherit;
-    margin-left: 10px;
-    min-width: 80px;
-    line-height: 20px;
-    border-style: solid;
-    border-radius: var(--border-radius, 0.2em);
-    padding: 3px;
-    color: var(--button-color, white);
-    cursor: pointer;
+  .app-modal-buttons{
+    position: absolute;
+    width: 96%;
+    bottom: 72px;
+}
+  .hide{
+    display:none;
   }
-  .app-modal-cancel {
-    background-color: var(--cancel-bg-color, #848e97);
-    border-color: var(--cancel-bg-color, #848e97);
+  button.btn{
+    color:#ffffff;
+    background:var(--bg-violet);
+    padding:5px 8px;
+    text-align:center;    
+    border-radius: 5px;
+    border: 0;
+    font-weight: 100;
+    font-size: 14px;
   }
-  .app-modal-cancel:hover {
-    background-color: var(--cancel-hover-bg-color, #6c757d);
-    border-color: var(--cancel-hover-bg-color, #6c757d);
-  }
-  .app-modal-ok {
-    background-color: var(--ok-bg-color, #848e97);
-    border-color: var(--ok-bg-color, #848e97);
-  }
-  .app-modal-ok:hover {
-    background-color: var(--ok-hover-bg-color, #6c757d);
-    border-color: var(--ok-hover-bg-color, #6c757d);
+
+  @media(max-width:40rem){
+    button.btn{
+      color:#ffffff;
+      background:var(--bg-violet);
+      padding:10px 8px;
+      width: 95%;
+      margin: 0 auto;
+      display: block;
+    }
   }
   
