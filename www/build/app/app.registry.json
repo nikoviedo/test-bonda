@@ -13,7 +13,7 @@
     },
     "app-list-wallet": {
       "bundleIds": {
-        "$": "app-content-list-wallet"
+        "$": "app-list-wallet"
       }
     },
     "app-modal": {
@@ -24,9 +24,29 @@
     },
     "app-root": {
       "bundleIds": {
-        "$": "app-content-list-wallet"
+        "$": "app-list-wallet"
       },
       "encapsulation": "shadow"
+    },
+    "stencil-route": {
+      "bundleIds": {
+        "$": "app-list-wallet"
+      }
+    },
+    "stencil-route-link": {
+      "bundleIds": {
+        "$": "app-list-wallet"
+      }
+    },
+    "stencil-route-switch": {
+      "bundleIds": {
+        "$": "app-content-list-wallet"
+      }
+    },
+    "stencil-router": {
+      "bundleIds": {
+        "$": "stencil-router"
+      }
     }
   }
 }

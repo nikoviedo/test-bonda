@@ -971,7 +971,7 @@ const defineMember = (plt, property, elm, instance, memberName, hostSnapshot, pe
     // read any "own" property instance values already set
     // to our internal value as the source of getter data
     // we're about to define a property and it'll overwrite this "own" property
-    values[memberName] = instance[memberName]), 
+    values[memberName] = instance[memberName]), property.watchCallbacks && (values[WATCH_CB_PREFIX + memberName] = property.watchCallbacks.slice()), 
     // add getter/setter to the component instance
     // these will be pointed to the internal data set from the above checks
     definePropertyGetterSetter(instance, memberName, function getComponentProp(values) {
@@ -982,11 +982,15 @@ const defineMember = (plt, property, elm, instance, memberName, hostSnapshot, pe
       // component instance prop/state setter (cannot be arrow fn)
       elm = plt.hostElementMap.get(this), elm && (property.state || property.mutable ? setValue(plt, elm, memberName, newValue, perf) : console.warn(`@Prop() "${memberName}" on "${elm.tagName}" cannot be modified.`));
     });
-  } else property.elementRef && 
+  } else if (property.elementRef) 
   // @Element()
   // add a getter to the element reference using
   // the member name the component meta provided
-  definePropertyValue(instance, memberName, elm);
+  definePropertyValue(instance, memberName, elm); else if (property.context) {
+    // @Prop({ context: 'config' })
+    const contextObj = plt.getContextItem(property.context);
+    void 0 !== contextObj && definePropertyValue(instance, memberName, contextObj.getContext && contextObj.getContext(elm) || contextObj);
+  } else false;
 };
 
 const setValue = (plt, elm, memberName, newVal, perf, instance, values) => {
@@ -995,16 +999,29 @@ const setValue = (plt, elm, memberName, newVal, perf, instance, values) => {
   values = plt.valuesMap.get(elm), values || plt.valuesMap.set(elm, values = {});
   const oldVal = values[memberName];
   // check our new property value against our internal value
-    newVal !== oldVal && (
+    if (newVal !== oldVal && (
   // gadzooks! the property's value has changed!!
   // set our new value!
   // https://youtu.be/dFtLONl4cNc?t=22
-  values[memberName] = newVal, instance = plt.instanceMap.get(elm), instance && !plt.activeRender && elm['s-rn'] && 
-  // looks like this value actually changed, so we've got work to do!
-  // but only if we've already rendered, otherwise just chill out
-  // queue that we need to do an update, but don't worry about queuing
-  // up millions cuz this function ensures it only runs once
-  queueUpdate(plt, elm, perf));
+  values[memberName] = newVal, instance = plt.instanceMap.get(elm), instance)) {
+    {
+      const watchMethods = values[WATCH_CB_PREFIX + memberName];
+      if (watchMethods) 
+      // this instance is watching for when this property changed
+      for (let i = 0; i < watchMethods.length; i++) try {
+        // fire off each of the watch methods that are watching this property
+        instance[watchMethods[i]].call(instance, newVal, oldVal, memberName);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    !plt.activeRender && elm['s-rn'] && 
+    // looks like this value actually changed, so we've got work to do!
+    // but only if we've already rendered, otherwise just chill out
+    // queue that we need to do an update, but don't worry about queuing
+    // up millions cuz this function ensures it only runs once
+    queueUpdate(plt, elm, perf);
+  }
 };
 
 const definePropertyValue = (obj, propertyKey, value) => {
@@ -1023,6 +1040,8 @@ const definePropertyGetterSetter = (obj, propertyKey, get, set) => {
     set
   });
 };
+
+const WATCH_CB_PREFIX = 'wc-';
 
 const initComponentInstance = (plt, elm, hostSnapshot, perf, instance, componentConstructor, queuedEvents, i) => {
   try {
@@ -1279,7 +1298,7 @@ const initHostElement = (plt, cmpMeta, HostElementConstructor, hydratedCssClass,
           // fire off the user's elm.componentOnReady() callbacks that were
           // put directly on the element (well before anything was ready)
           (onReadyCallbacks = plt.onReadyCallbacksMap.get(elm)) && (onReadyCallbacks.forEach(cb => cb(elm)), 
-          plt.onReadyCallbacksMap.delete(elm)), !hasCmpLoaded && instance.componentDidLoad && instance.componentDidLoad();
+          plt.onReadyCallbacksMap.delete(elm)), !hasCmpLoaded && instance.componentDidLoad ? instance.componentDidLoad() : hasCmpLoaded && instance.componentDidUpdate && instance.componentDidUpdate();
         } catch (e) {
           plt.onError(e, 4 /* DidLoadError */ , elm);
         }
@@ -1686,4 +1705,4 @@ const initHostElement = (plt, cmpMeta, HostElementConstructor, hydratedCssClass,
   // but note that the components have not fully loaded yet
   App.initialized = true;
 })(n, x, w, d, r, h, c);
-})(window,document,{},"App","hydrated",[["app-content-list-wallet","app-content-list-wallet",1,[["listData",16]]],["app-list-wallet","app-content-list-wallet",1,[["isScroll",64],["listData",16]],0,[["window:scroll","handleScroll",0,1]]],["app-modal","app-modal",1,[["title",1,0,1,2],["visible",2,1,1,4]],1],["app-root","app-content-list-wallet",1,0,1]]);
+})(window,document,{},"App","hydrated",[["app-content-list-wallet","app-content-list-wallet",1,[["history",1],["listData",16]]],["app-list-wallet","app-list-wallet",1,[["isScroll",64],["listData",16]],0,[["window:scroll","handleScroll",0,1]]],["app-modal","app-modal",1,[["title",1,0,1,2],["visible",2,1,1,4]],1],["app-root","app-list-wallet",1,[["history",1]],1],["stencil-route","app-list-wallet",1,[["component",1,0,1,2],["componentProps",1],["componentUpdated",1],["el",64],["exact",1,0,1,4],["group",1,0,1,2],["history",1],["historyType",1,0,"history-type",2],["location",1],["match",2],["routeRender",1],["routeViewsUpdated",1],["scrollTopOffset",1,0,"scroll-top-offset",8],["url",1,0,1,2]]],["stencil-route-link","app-list-wallet",0,[["activeClass",1,0,"active-class",2],["anchorClass",1,0,"anchor-class",2],["anchorId",1,0,"anchor-id",2],["anchorRole",1,0,"anchor-role",2],["anchorTabIndex",1,0,"anchor-tab-index",2],["anchorTitle",1,0,"anchor-title",2],["ariaHaspopup",1,0,"aria-haspopup",2],["ariaLabel",1,0,"aria-label",2],["ariaPosinset",1,0,"aria-posinset",2],["ariaSetsize",1,0,"aria-setsize",8],["custom",1,0,1,2],["el",64],["exact",1,0,1,4],["history",1],["location",1],["match",16],["root",1,0,1,2],["strict",1,0,1,4],["url",1,0,1,2],["urlMatch",1,0,"url-match",2]]],["stencil-route-switch","app-content-list-wallet",0,[["el",64],["group",1,0,1,2],["location",1],["queue",4,0,0,0,"queue"],["routeViewsUpdated",1],["scrollTopOffset",1,0,"scroll-top-offset",8]]],["stencil-router","stencil-router",0,[["history",16],["historyType",1,0,"history-type",2],["isServer",4,0,0,0,"isServer"],["location",16],["queue",4,0,0,0,"queue"],["root",1,0,1,2],["scrollTopOffset",1,0,"scroll-top-offset",8],["titleSuffix",1,0,"title-suffix",2]]]]);

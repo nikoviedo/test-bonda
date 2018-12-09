@@ -1,5 +1,5 @@
-import { Component } from '@stencil/core';
-
+import { Component, Prop } from '@stencil/core';
+import { RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-root',
@@ -8,7 +8,7 @@ import { Component } from '@stencil/core';
 })
 
 export class AppRoot {
-
+  @Prop() history: RouterHistory;
   render() {
     return (
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"> 
@@ -36,7 +36,9 @@ export class AppRoot {
               <app-list-wallet/>
             </div>
             <div class="wallet-content-list mdl-cell mdl-cell--7-col mt0 p0">
-              <app-content-list-wallet />
+              <stencil-router id="router">
+                <stencil-route url="/wallet/" component="app-content-list-wallet" />
+              </stencil-router>
             </div>
           </div>
         </main>

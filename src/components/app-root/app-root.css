@@ -160,6 +160,12 @@ footer.footer-app{
     .wallet-list .wallet-list-header i{
         display:none;
     }
+    main.mdl-container {
+        max-width: 100%;
+        width: 100%;
+        height:86vh;
+        overflow: auto;
+    }
     .wallet-list{
         margin:0;
         padding:0 10px;
@@ -173,6 +179,28 @@ footer.footer-app{
     }
     .wallet-item:last-child{
         border:0;
+        width:95%;
+    }
+
+    .wallet-content-list-items {
+        overflow: hidden;
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        background: white;
+        padding: 0 15px;
+    }
+
+    .wallet-list-items{
+
+    }
+    .wallet-list .container {
+        height: 100%;
+        position: relative;
     }
     /* footer app */
     footer.footer-app{

@@ -7,13 +7,21 @@
 
 import '@stencil/core';
 
-
+import '@stencil/router';
+import '@stencil/state-tunnel';
+import {
+  RouterHistory,
+} from '@stencil/router';
 
 
 export namespace Components {
 
-  interface AppContentListWallet {}
-  interface AppContentListWalletAttributes extends StencilHTMLAttributes {}
+  interface AppContentListWallet {
+    'history': RouterHistory;
+  }
+  interface AppContentListWalletAttributes extends StencilHTMLAttributes {
+    'history'?: RouterHistory;
+  }
 
   interface AppListWallet {}
   interface AppListWalletAttributes extends StencilHTMLAttributes {}
@@ -29,8 +37,12 @@ export namespace Components {
     'visible'?: boolean;
   }
 
-  interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {}
+  interface AppRoot {
+    'history': RouterHistory;
+  }
+  interface AppRootAttributes extends StencilHTMLAttributes {
+    'history'?: RouterHistory;
+  }
 }
 
 declare global {
