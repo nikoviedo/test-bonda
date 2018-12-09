@@ -14,6 +14,12 @@ border-right: 1px solid #e1e1e3;
     opacity: .4;
 }
 
+.wallet-content-list-items{
+    position: absolute;
+    height: 66vh;
+    overflow: hidden;
+    overflow-y: auto
+}
 .wallet-content-list-items article{
     width: 100%;
 }

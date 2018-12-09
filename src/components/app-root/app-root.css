@@ -97,6 +97,16 @@ h2,h3{
     margin:0 auto;
     position:relative;
 }
+main.mdl-container{
+    max-width:100%;
+    width:1136px;
+    height:66vh;
+    overflow:hidden;
+}
+
+main.mdl-container > .mdl-grid{
+    height:66vh;
+}
 /* header */
 .header__logo{
     height: 100px
