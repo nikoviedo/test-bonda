@@ -103,10 +103,10 @@ main.mdl-container{
     height:66vh;
     overflow:hidden;
 }
-
 main.mdl-container > .mdl-grid{
     height:66vh;
 }
+
 /* header */
 .header__logo{
     height: 100px
@@ -193,10 +193,6 @@ footer.footer-app{
         z-index: 999;
         background: white;
         padding: 0 15px;
-    }
-
-    .wallet-list-items{
-
     }
     .wallet-list .container {
         height: 100%;

@@ -13,7 +13,7 @@ export class AppRoot {
     return (
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"> 
         <div class="mdl-layout__header-row header__logo">
-          <h1><a href=""><img src="assets/img/logo_bondacom-02.svg" height="30" alt="" /></a></h1>
+          <h1><a href="/"><img src="/assets/img/logo_bondacom-02.svg" height="30" alt="" /></a></h1>
         </div>
         <header class="mdl-layout__header mdl-layout--no-desktop-drawer-button mdl-layout__header--scroll">
           <div class="mdl-layout__header-row mdl-container">
